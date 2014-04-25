@@ -9,12 +9,13 @@ var express         = require('express');
     favicon         = require('static-favicon'),
     logger          = require('morgan'),
     cookieParser    = require('cookie-parser'),
-    bodyParser      = require('body-parser'),
-    io              = require('socket.io');
+    bodyParser      = require('body-parser');
 
 //App instance
 var app             = express(),
     server          = http.createServer(app);
+
+    io              = require('socket.io');
 
     //Global server instance
     ioServer        = io.listen(server);
@@ -115,7 +116,7 @@ fs.readdirSync('./controllers').forEach(function(file){
 
 
 //=======================================================//
-//listen on port 3001
+//listen on port 3999
 //=======================================================//
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
