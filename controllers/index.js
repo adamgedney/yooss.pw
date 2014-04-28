@@ -53,7 +53,7 @@ module.exports.controller = function(app, io){
 			  //Join user this user's room
 			  socket.join(room);
 
-			  console.log(socket.rooms, "does room exist?");
+			  console.log(io.sockets.manager.rooms, "does room exist?", io.sockets.clients(room), "clients in room");
 
 			  //Broadcast message to listening clients in room
 			  // socket.broadcast.to(room).emit('roomJoined', join);
