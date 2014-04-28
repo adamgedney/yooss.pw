@@ -3,6 +3,11 @@ module.exports.controller = function(app, io){
 	//Main SERVER ROUTE
 	app.get('/', function(req, res){
 
+
+		//Display message in popup window on client
+		res.render('index');
+
+
 		console.log("server route picked up", io);
 		//When a connection form the client has been established
 		io.sockets.on('connection', function (socket) {
