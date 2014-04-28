@@ -51,7 +51,7 @@ module.exports.controller = function(app, io){
 			  console.log( join, "does room exist?");
 
 			  //Broadcast message to listening clients in room
-			  socket.broadcast.to(room).emit('roomJoined', join);
+			  // socket.broadcast.to(room).emit('roomJoined', join);
 			});
 
 
