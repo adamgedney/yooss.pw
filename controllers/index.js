@@ -155,7 +155,7 @@ module.exports.controller = function(app, io){
 			//========================================//
 			//Receives emitClick event from client emit
 			//========================================//
-			socket.on('seekTo', function (data) {
+			socket.on('emitClick', function (data) {
 			  console.log("emitClick", data);
 
 			  //Stringify userId
