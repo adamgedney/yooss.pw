@@ -22,7 +22,7 @@ module.exports.controller = function(app, io){
 			  console.log("playOn", data);
 
 			  //Broadcast message to listening clients
-			  socket.emit('playOn', data);
+			  socket.broadcast.emit('playOn', data);
 			});
 
 
@@ -40,7 +40,7 @@ module.exports.controller = function(app, io){
 			  console.log("pauseOn", data);
 
 			  //Broadcast message to listening clients
-			  socket.emit('pauseOn', data);
+			  socket.broadcast.emit('pauseOn', data);
 			});
 
 
@@ -58,7 +58,7 @@ module.exports.controller = function(app, io){
 			  console.log("pauseOn", data);
 
 			  //Broadcast message to listening clients
-			  socket.emit('volumeOn', data);
+			  socket.broadcast.emit('volumeOn', data);
 			});
 
 
