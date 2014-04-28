@@ -114,10 +114,13 @@ module.exports.controller = function(app, io){
 			//Receives VOLUME event from client emit
 			//========================================//
 			socket.on('volume', function (data) {
-			  console.log("pauseOn", data);
+			  console.log("volume", data);
+
+			  //Stringify userId
+			  var room = data.userId + "";
 
 			  //Broadcast message to listening clients
-			  socket.broadcast.emit('volumeOn', data);
+			  socket.broadcast.to(room).emit('volumeOn', data);
 			});
 
 
