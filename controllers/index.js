@@ -8,7 +8,7 @@ module.exports.controller = function(app, io){
 		io.sockets.on('connection', function (socket) {
 
 
-
+			console.log("client connected to server", socket);
 
 			//========================================//
 			//Receives PLAY command from client emit
