@@ -75,7 +75,7 @@ module.exports.controller = function(app, io){
 			socket.on('discon', function (data) {
 			  console.log("disconnect", data);
 
-			  io.sockets.leave();
+			  // io.sockets.leave();
 
 			  // io.sockets.in(socket.room).leave(socket.room);
 			  //Broadcast message to listening clients
