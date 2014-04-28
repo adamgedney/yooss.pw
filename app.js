@@ -15,7 +15,7 @@ var express         = require('express');
 var app             = express(),
     server          = http.createServer(app),
 
-    GLOBAL.io       = require('socket.io').listen(server);
+    io       = require('socket.io').listen(server);
 
     //Global server instance
     // ioServer        = io.listen(server);
