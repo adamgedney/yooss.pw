@@ -40,7 +40,7 @@ module.exports.controller = function(app, io){
 			//Receives JOINROOM event from client emit
 			//========================================//
 			socket.on('joinRoom', function (data) {
-			  console.log("createRoom", data);
+			  console.log("joinRoom", data);
 
 			  //Stringify userId
 			  var room = data + "";
@@ -48,7 +48,7 @@ module.exports.controller = function(app, io){
 			  //Join user this user's room
 			  var join = socket.join(room);
 
-			  console.log( join, "does room exist?");
+			  console.log( socket.rooms, "does room exist?");
 
 			  //Broadcast message to listening clients in room
 			  // socket.broadcast.to(room).emit('roomJoined', join);
@@ -123,7 +123,7 @@ module.exports.controller = function(app, io){
 			socket.on('discon', function (data) {
 			  console.log("disconnect", data);
 
-			  // io.sockets.leave();
+			  socket.leave(data);
 
 			  // io.sockets.in(socket.room).leave(socket.room);
 			  //Broadcast message to listening clients
