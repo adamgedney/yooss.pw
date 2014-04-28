@@ -72,7 +72,7 @@ module.exports.controller = function(app, io){
 			//========================================//
 			//Receives DISCONNECT command from client emit
 			//========================================//
-			socket.on('disconnect', function (data) {
+			socket.on('discon', function (data) {
 			  console.log("disconnect", data);
 
 			  io.sockets.leave();
