@@ -1,7 +1,7 @@
 module.exports.controller = function(app){
 
 	//Main SERVER ROUTE
-	app.get('/socket_events', function(req, res){
+	app.get('/socket-events', function(req, res){
 
 
 		//When a connection form the client has been established
