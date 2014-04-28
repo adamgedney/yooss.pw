@@ -39,7 +39,7 @@ console.log("app loaded", server);
 //=======================================================//
 //setup configurations
 //=======================================================//
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 3000);
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -182,7 +182,7 @@ console.log("socket-events route picked up");
 
 
 //=======================================================//
-//listen on port 3999
+//listen on port 3000
 //=======================================================//
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
