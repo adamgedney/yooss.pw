@@ -36,6 +36,11 @@ module.exports.controller = function(app, io){
 
 
 
+
+
+
+
+
 			//========================================//
 			//Receives JOINROOM event from client emit
 			//========================================//
@@ -46,9 +51,9 @@ module.exports.controller = function(app, io){
 			  var room = data + "";
 
 			  //Join user this user's room
-			  var join = socket.join(room);
+			  socket.join(room);
 
-			  console.log( socket.rooms, "does room exist?");
+			  console.log(socket.rooms, "does room exist?");
 
 			  //Broadcast message to listening clients in room
 			  // socket.broadcast.to(room).emit('roomJoined', join);
@@ -69,8 +74,11 @@ module.exports.controller = function(app, io){
 			socket.on('play', function (data) {
 			  console.log("playOn", data);
 
+			  //Stringify userId
+			  var room = data.userId + "";
+
 			  //Broadcast message to listening clients in room
-			  socket.broadcast.to(data.userId).emit('playOn', data);
+			  socket.broadcast.to(room).emit('playOn', data);
 			});
 
 
@@ -123,7 +131,12 @@ module.exports.controller = function(app, io){
 			socket.on('discon', function (data) {
 			  console.log("disconnect", data);
 
-			  socket.leave(data);
+			  //Stringify userId
+			  var room = data + "";
+
+			  //Indicated the client was refreshed.
+			  //Leave room and re enter
+			  socket.leave(room);
 
 			  // io.sockets.in(socket.room).leave(socket.room);
 			  //Broadcast message to listening clients
