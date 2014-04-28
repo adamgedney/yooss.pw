@@ -5,7 +5,7 @@ module.exports.controller = function(app, io){
 
 
 		//Display message in popup window on client
-		res.render('index', {message : "Please do not close this window"});
+		res.render('index', { title: 'Please do not close this window' });
 
 
 		console.log("server route picked up", io);
