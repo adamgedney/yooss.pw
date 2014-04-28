@@ -3,11 +3,11 @@ module.exports.controller = function(app){
 	//Main SERVER ROUTE
 	app.get('/socket-events', function(req, res){
 
-
+console.log("socket-events route picked up");
 		//When a connection form the client has been established
 		ioServer.sockets.on('connection', function (socket) {
 
-
+			console.log("connection established form client");
 			//========================================//
 			//Receives PLAY command from client emit
 			//========================================//
