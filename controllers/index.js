@@ -95,8 +95,11 @@ module.exports.controller = function(app, io){
 			socket.on('pause', function (data) {
 			  console.log("pauseOn", data);
 
+			  //Stringify userId
+			  var room = data.userId + "";
+
 			  //Broadcast message to listening clients in room
-			  socket.broadcast.to(data.userId).emit('pauseOn', data);
+			  socket.broadcast.to(room).emit('pauseOn', data);
 			});
 
 
