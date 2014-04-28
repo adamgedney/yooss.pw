@@ -6,12 +6,12 @@ module.exports.controller = function(app, io){
 		var rooms = [];
 
 
-		console.log("server route picked up", io);
+		console.log("server route picked up");
 		//When a connection form the client has been established
 		io.sockets.on('connection', function (socket) {
 
 
-			console.log("client connected to server", socket);
+			console.log("client connected to server");
 
 
 			//========================================//
@@ -20,14 +20,17 @@ module.exports.controller = function(app, io){
 			socket.on('createRoom', function (data) {
 			  console.log("createRoom", data);
 
+			  //Stringify userId
+			  var room = data + "";
+
 			  //Create a room for this userid
-			  socket.room = data;
+			  socket.room = room;
 
 			  //Add room to list of rooms
-			  rooms.push(data);
+			  rooms.push(room);
 
 			  //Broadcast message to listening clients in room
-			  socket.broadcast.to(data).emit('roomCreated', data);
+			  socket.broadcast.to(room).emit('roomCreated', room);
 			});
 
 
@@ -39,13 +42,16 @@ module.exports.controller = function(app, io){
 			socket.on('joinRoom', function (data) {
 			  console.log("createRoom", data);
 
+			  //Stringify userId
+			  var room = data + "";
+
 			  //Join user this user's room
-			  var join = socket.join(data);
+			  var join = socket.join(room);
 
 			  console.log( join, "does room exist?");
 
 			  //Broadcast message to listening clients in room
-			  socket.broadcast.to(data).emit('roomJoined', join);
+			  socket.broadcast.to(room).emit('roomJoined', join);
 			});
 
 
