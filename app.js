@@ -2,7 +2,7 @@
 //Requires
 //=======================================================//
 
-var express         = require('express')();
+var express         = require('express');
     fs              = require('fs'),
     http            = require('http'),
     path            = require('path'),
@@ -12,7 +12,7 @@ var express         = require('express')();
     bodyParser      = require('body-parser');
 
 //App instance
-var app             = express,
+var app             = express(),
     server          = http.createServer(app);
 
     io              = require('socket.io').listen(server);
