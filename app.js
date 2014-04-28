@@ -21,7 +21,7 @@ var app             = express(),
     // ioServer        = io.listen(server);
 
     //Socket.io listen port
-    server.listen(80);
+    server.listen(8080);
 
 
     console.log("app loaded", server);
