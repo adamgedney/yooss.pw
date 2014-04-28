@@ -69,6 +69,27 @@ module.exports.controller = function(app, io){
 
 
 
+			//========================================//
+			//Receives DISCONNECT command from client emit
+			//========================================//
+			socket.on('disconnect', function (data) {
+			  console.log("disconnect", data);
+
+			  io.sockets.leave();
+
+			  // io.sockets.in(socket.room).leave(socket.room);
+			  //Broadcast message to listening clients
+			  // socket.emit('playOn', data);
+			});
+
+
+
+
+
+
+
+
+
 
 		});//ioServer
 	});//.get
