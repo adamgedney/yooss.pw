@@ -15,10 +15,8 @@ var express         = require('express');
 var app             = express(),
     server          = http.createServer(app),
 
-    io       = require('socket.io').listen(server);
+    io              = require('socket.io').listen(server);
 
-    //Global server instance
-    // ioServer        = io.listen(server);
 
     //Socket.io listen port
     server.listen(3001);
@@ -98,7 +96,7 @@ if (app.get('env') === 'development') {
 fs.readdirSync('./controllers').forEach(function(file){
     if(file.substr(-3) == '.js'){
         var route = require('./controllers/' + file);
-        route.controller(app);
+        route.controller(app, io);
     }
 });
 

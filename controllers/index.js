@@ -1,4 +1,4 @@
-module.exports.controller = function(app){
+module.exports.controller = function(app, io){
 
 	//Main SERVER ROUTE
 	app.get('/', function(req, res){
