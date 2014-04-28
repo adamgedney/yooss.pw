@@ -39,7 +39,7 @@ var app             = express(),
 //=======================================================//
 //Express setup configurations
 //=======================================================//
-app.set('port', process.env.PORT || 41794);
+app.set('port', process.env.PORT || 3000);
 
 
 app.set('views', path.join(__dirname, 'views'));
