@@ -12,7 +12,7 @@ module.exports.controller = function(app){
 
 
 		//When a connection form the client has been established
-		ioServer.sockets.on('connection', function (socket) {
+		io.sockets.on('connection', function (socket) {
 
 			socket.emit('test', "test data connection opened");
 

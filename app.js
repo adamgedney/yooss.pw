@@ -13,16 +13,15 @@ var express         = require('express')();
 
 //App instance
 var app             = express,
-    // server          = http.createServer(app);
-    server          = http.Server(app);
+    server          = http.createServer(app);
 
-    io              = require('socket.io')(server);
+    io              = require('socket.io').listen(server);
 
     //Global server instance
-    ioServer        = io.listen(server);
+    // ioServer        = io.listen(server);
 
     //Socket.io listen port
-    server.listen(41795);
+    server.listen(80);
 
 
     console.log("app loaded", server);
