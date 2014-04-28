@@ -151,6 +151,28 @@ module.exports.controller = function(app, io){
 
 
 
+
+			//========================================//
+			//Receives emitClick event from client emit
+			//========================================//
+			socket.on('seekTo', function (data) {
+			  console.log("emitClick", data);
+
+			  //Stringify userId
+			  var room = data.userId + "";
+
+			  //Broadcast message to listening clients
+			  socket.broadcast.to(room).emit('emitClickOn', data);
+			});
+
+
+
+
+
+
+
+
+
 			//========================================//
 			//Receives DISCONNECT event from client emit
 			//========================================//
