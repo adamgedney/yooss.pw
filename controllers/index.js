@@ -3,9 +3,7 @@ module.exports.controller = function(app, io){
 	//Main SERVER ROUTE
 	app.get('/', function(req, res){
 
-
-		//Display message in popup window on client
-		// res.render('index', { title: 'Please do not close this window' });
+		var rooms = [];
 
 
 		console.log("server route picked up", io);
@@ -15,14 +13,58 @@ module.exports.controller = function(app, io){
 
 			console.log("client connected to server", socket);
 
+
 			//========================================//
-			//Receives PLAY command from client emit
+			//Receives CREATEROOM event from client emit
+			//========================================//
+			socket.on('createRoom', function (data) {
+			  console.log("createRoom", data);
+
+			  //Create a room for this userid
+			  socket.room = data;
+
+			  //Add room to list of rooms
+			  rooms.push(data);
+
+			  //Broadcast message to listening clients in room
+			  socket.broadcast.to(data).emit('roomCreated', data);
+			});
+
+
+
+
+			//========================================//
+			//Receives JOINROOM event from client emit
+			//========================================//
+			socket.on('joinRoom', function (data) {
+			  console.log("createRoom", data);
+
+			  //Join user this user's room
+			  var join = socket.join(data);
+
+			  console.log( join, "does room exist?");
+
+			  //Broadcast message to listening clients in room
+			  socket.broadcast.to(data).emit('roomJoined', join);
+			});
+
+
+
+
+
+
+
+
+
+
+			//========================================//
+			//Receives PLAY event from client emit
 			//========================================//
 			socket.on('play', function (data) {
 			  console.log("playOn", data);
 
-			  //Broadcast message to listening clients
-			  socket.broadcast.emit('playOn', data);
+			  //Broadcast message to listening clients in room
+			  socket.broadcast.to(data.userId).emit('playOn', data);
 			});
 
 
@@ -34,13 +76,13 @@ module.exports.controller = function(app, io){
 
 
 			//========================================//
-			//Receives PAUSE command from client emit
+			//Receives PAUSE event from client emit
 			//========================================//
 			socket.on('pause', function (data) {
 			  console.log("pauseOn", data);
 
-			  //Broadcast message to listening clients
-			  socket.broadcast.emit('pauseOn', data);
+			  //Broadcast message to listening clients in room
+			  socket.broadcast.to(data.userId).emit('pauseOn', data);
 			});
 
 
@@ -52,7 +94,7 @@ module.exports.controller = function(app, io){
 
 
 			//========================================//
-			//Receives VOLUME commands from client emit
+			//Receives VOLUME event from client emit
 			//========================================//
 			socket.on('volume', function (data) {
 			  console.log("pauseOn", data);
@@ -70,7 +112,7 @@ module.exports.controller = function(app, io){
 
 
 			//========================================//
-			//Receives DISCONNECT command from client emit
+			//Receives DISCONNECT event from client emit
 			//========================================//
 			socket.on('discon', function (data) {
 			  console.log("disconnect", data);
