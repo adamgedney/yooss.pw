@@ -4,20 +4,12 @@ module.exports.controller = function(app, io){
 	app.get('/', function(req, res){
 
 
-
-		console.log("socket-events route picked up");
-
-
-
-
-
 		//When a connection form the client has been established
 		io.sockets.on('connection', function (socket) {
 
-			socket.emit('test', "test data connection opened");
 
 
-			console.log("connection established from client", socket);
+
 			//========================================//
 			//Receives PLAY command from client emit
 			//========================================//

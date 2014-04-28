@@ -22,7 +22,6 @@ var app             = express(),
     server.listen(3001);
 
 
-    console.log("app loaded", server);
 
 
 
