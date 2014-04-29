@@ -19,7 +19,7 @@ var app             = express(),
 
 
     //Socket.io listen port
-    server.listen(3001);
+    server.listen(3000);
 
 
 
@@ -36,7 +36,7 @@ var app             = express(),
 //=======================================================//
 //Express setup configurations
 //=======================================================//
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 
 
 app.set('views', path.join(__dirname, 'views'));
