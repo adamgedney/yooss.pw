@@ -1,12 +1,12 @@
 module.exports.controller = function(app, io){
 
 	//Main SERVER ROUTE
-	app.get('/', function(req, res){
+	// app.get('/', function(req, res){
 
-		var rooms = [];
+	// 	var rooms = [];
 
 
-		console.log("server route picked up");
+	// 	console.log("server route picked up");
 		//When a connection form the client has been established
 		io.sockets.on('connection', function (socket) {
 
@@ -201,6 +201,6 @@ module.exports.controller = function(app, io){
 
 
 		});//ioServer
-	});//.get
+	// });//.get
 };// module
 
