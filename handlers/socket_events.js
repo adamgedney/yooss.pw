@@ -68,10 +68,10 @@ module.exports.controller = function(app, io){
 		  console.log("force", data);
 
 		  //Stringify userId
-		  var room = data + "";
+		  var room = data.userId + "";
 
 		  //Broadcast message to listening clients in room
-		  socket.broadcast.to(room).emit('roomForced');
+		  socket.broadcast.to(room).emit('roomForced', data);
 		});
 
 
