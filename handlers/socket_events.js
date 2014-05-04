@@ -61,25 +61,6 @@ module.exports.controller = function(app, io){
 
 
 
-		//========================================//
-		//Receives FORCE event from client emit
-		//========================================//
-		socket.on('force', function (data) {
-		  console.log("force", data);
-
-		  //Stringify userId
-		  var room = data.userId + "";
-
-		  //Broadcast message to listening clients in room
-		  socket.broadcast.to(room).emit('roomForced', data);
-		});
-
-
-
-
-
-
-
 
 
 
