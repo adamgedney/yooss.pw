@@ -17,7 +17,7 @@ var app             = express(),
 
     io              = require('socket.io').listen(server);
 
-
+    io.set( 'origins', '*yootunes.com*:*' );
     //Socket.io listen port
     server.listen(3000);
 
