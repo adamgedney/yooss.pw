@@ -67,6 +67,25 @@ module.exports.controller = function(app, io){
 
 
 
+			//========================================//
+			//Receives FORCE event from client emit
+			//========================================//
+			socket.on('force', function () {
+			  console.log("force");
+
+
+			  //Broadcast message to listening clients in room
+			  socket.broadcast.to(room).emit('roomForced');
+			});
+
+
+
+
+
+
+
+
+
 
 			//========================================//
 			//Receives PLAY event from client emit
