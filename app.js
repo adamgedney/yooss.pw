@@ -89,12 +89,11 @@ if (app.get('env') === 'development') {
 
 
 //=======================================================//
-//Require all controllers & run their constructors
-//to listen for routes
+//Require all event handler files in handlers folder
 //=======================================================//
-fs.readdirSync('./controllers').forEach(function(file){
+fs.readdirSync('./handlers').forEach(function(file){
     if(file.substr(-3) == '.js'){
-        var route = require('./controllers/' + file);
+        var route = require('./handlers/' + file);
         route.controller(app, io);
     }
 });
