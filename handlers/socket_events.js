@@ -126,6 +126,27 @@ module.exports.controller = function(app, io){
 
 
 
+
+		//========================================//
+		//Receives seekUpdate event from client emit
+		//========================================//
+		socket.on('seekUpdate', function (data) {
+		  console.log("seekUpdate", data);
+
+		  //Stringify userId
+		  var room = data.userId + "";
+
+		  //Broadcast message to listening clients
+		  socket.broadcast.to(room).emit('seekUpdateOn', data);
+		});
+
+
+
+
+
+
+
+
 		//========================================//
 		//Receives seekTo event from client emit
 		//========================================//
