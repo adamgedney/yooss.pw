@@ -6,7 +6,8 @@ module.exports.controller = function(app, io){
 
 
 		console.log("client connected to server");
-
+		//Emit wildcard for testing
+		 socket.broadcast.to(room).emit('*', "client connected to server");
 
 		//========================================//
 		//Receives CREATEROOM event from client emit
@@ -25,6 +26,9 @@ module.exports.controller = function(app, io){
 
 		  //Broadcast message to listening clients in room
 		  socket.broadcast.to(room).emit('roomCreated', room);
+
+		  //Emit wildcard for testing
+		  socket.broadcast.to(room).emit('*', data);
 		});
 
 
@@ -51,6 +55,9 @@ module.exports.controller = function(app, io){
 
 		  //Broadcast message to listening clients in room
 		  socket.broadcast.to(room).emit('roomJoined', data);
+
+		  //Emit wildcard for testing
+		  socket.broadcast.to(room).emit('*', data);
 		});
 
 
@@ -75,6 +82,9 @@ module.exports.controller = function(app, io){
 
 		  //Broadcast message to listening clients in room
 		  socket.broadcast.to(room).emit('playOn', data);
+
+		  //Emit wildcard for testing
+		  socket.broadcast.to(room).emit('*', data);
 		});
 
 
@@ -96,6 +106,9 @@ module.exports.controller = function(app, io){
 
 		  //Broadcast message to listening clients in room
 		  socket.broadcast.to(room).emit('pauseOn', data);
+
+		  //Emit wildcard for testing
+		  socket.broadcast.to(room).emit('*', data);
 		});
 
 
@@ -117,6 +130,9 @@ module.exports.controller = function(app, io){
 
 		  //Broadcast message to listening clients
 		  socket.broadcast.to(room).emit('volumeOn', data);
+
+		  //Emit wildcard for testing
+		  socket.broadcast.to(room).emit('*', data);
 		});
 
 
@@ -138,6 +154,9 @@ module.exports.controller = function(app, io){
 
 		  //Broadcast message to listening clients
 		  socket.broadcast.to(room).emit('seekUpdateOn', data);
+
+		  //Emit wildcard for testing
+		  socket.broadcast.to(room).emit('*', data);
 		});
 
 
@@ -158,29 +177,12 @@ module.exports.controller = function(app, io){
 
 		  //Broadcast message to listening clients
 		  socket.broadcast.to(room).emit('seekToOn', data);
+
+		  //Emit wildcard for testing
+		  socket.broadcast.to(room).emit('*', data);
 		});
 
 
-
-
-
-
-
-
-
-
-		//========================================//
-		//Receives emitClick event from client emit
-		//========================================//
-		socket.on('emitClick', function (data) {
-		  console.log("emitClick", data);
-
-		  //Stringify userId
-		  var room = data.userId + "";
-
-		  //Broadcast message to listening clients
-		  socket.broadcast.to(room).emit('emitClickOn', data);
-		});
 
 
 
@@ -206,6 +208,9 @@ module.exports.controller = function(app, io){
 		  // io.sockets.in(socket.room).leave(socket.room);
 		  //Broadcast message to listening clients
 		  // socket.emit('playOn', data);
+
+		  //Emit wildcard for testing
+		  socket.broadcast.to(room).emit('*', data);
 		});
 
 

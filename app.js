@@ -14,10 +14,10 @@ var express         = require('express');
 //App instance
 var app             = express(),
     server          = http.createServer(app),
-
     io              = require('socket.io').listen(server);
 
     io.set( 'origins', '*atomplayer.com*:*' );
+
     //Socket.io listen port
     server.listen(3000);
 
