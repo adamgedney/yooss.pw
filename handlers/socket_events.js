@@ -6,8 +6,7 @@ module.exports.controller = function(app, io){
 
 
 		console.log("client connected to server");
-		//Emit wildcard for testing
-		 socket.broadcast.to(room).emit('*', "client connected to server");
+
 
 		//========================================//
 		//Receives CREATEROOM event from client emit
